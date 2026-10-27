@@ -1,0 +1,945 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logopediepraktijk Hanneke Lantin | Logopediste</title>
+    <style>
+        /* --- CSS Variabelen & Thema --- */
+        :root {
+            --bg-color: #FDFBF7;
+            --surface-color: #FFFFFF;
+            --surface-alt: #F7F2EC;
+            --primary-pink: #E8A598;
+            --primary-pink-hover: #D88675;
+            --accent-brown: #8C6D62;
+            --text-main: #4A3E3D;
+            --text-light: #766865;
+            --border-color: #E8E1D9;
+            --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --max-width: 1200px;
+            --radius: 12px;
+        }
+
+        /* --- Basis Instellingen --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            color: var(--text-main);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        a {
+            color: var(--accent-brown);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--primary-pink-hover);
+        }
+
+        /* --- Layout & Container --- */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 4.5rem 0;
+        }
+
+        section:nth-child(even) {
+            background-color: var(--surface-alt);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem auto;
+            font-size: 1.05rem;
+        }
+
+        /* --- Navigatie --- */
+        .header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .logo span {
+            color: var(--primary-pink-hover);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-pink-hover);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-pink);
+            color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-pink-hover);
+            color: #FFFFFF;
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent-brown);
+            color: var(--accent-brown);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-brown);
+            color: #FFFFFF;
+        }
+
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        /* --- Hero Sectie --- */
+        .hero {
+            padding: 5rem 0 4rem 0;
+            background: linear-gradient(135deg, #FDFBF7 0%, #F5EBE6 100%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-main);
+        }
+
+        .hero-profession {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-brown);
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-text p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Kaders voor de twee afbeeldingen */
+        .hero-cards-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .hero-card {
+            background: var(--surface-color);
+            padding: 1.5rem 1.2rem;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px rgba(74, 62, 61, 0.05);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            text-decoration: none;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-pink);
+        }
+
+        .hero-card-img-wrapper {
+            width: 100%;
+            max-width: 200px;
+            aspect-ratio: 1 / 1;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--surface-color);
+        }
+
+        .hero-card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .hero-card h3 {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        /* --- Over mij --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1000px;
+            margin: 2rem auto 0 auto;
+        }
+
+        .about-image-wrapper {
+            width: 100%;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(74, 62, 61, 0.08);
+            border: 1px solid var(--border-color);
+            background-color: var(--surface-color);
+        }
+
+        .about-image-wrapper img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-text p {
+            font-size: 1.02rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            text-align: justify;
+        }
+
+        /* --- Specialisaties --- */
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .spec-card {
+            background: var(--surface-color);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            border-top: 4px solid var(--primary-pink);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .spec-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+            color: var(--accent-brown);
+        }
+
+        .spec-card p {
+            font-size: 1.02rem;
+            margin-bottom: 0;
+            text-align: justify;
+        }
+
+        /* --- Opleidingen en Bijscholingen --- */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .edu-card {
+            background-color: var(--surface-color);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .edu-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-brown);
+            border-bottom: 2px solid var(--primary-pink);
+            padding-bottom: 0.4rem;
+        }
+
+        .compact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .compact-list li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            line-height: 1.4;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: left;
+        }
+
+        .compact-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .compact-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-pink-hover);
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1;
+            top: 0.1rem;
+        }
+
+        .year-tag {
+            font-weight: 700;
+            color: var(--accent-brown);
+        }
+
+        .inst-tag {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* --- Praktijken --- */
+        .practice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .practice-card {
+            background: var(--surface-color);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+        }
+
+        .practice-card h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-brown);
+        }
+
+        .practice-info {
+            list-style: none;
+        }
+
+        .practice-info li {
+            margin-bottom: 0.8rem;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+            text-align: left;
+        }
+
+        .practice-info li span.street {
+            display: block;
+        }
+
+        .practice-info li span.city {
+            display: block;
+        }
+
+        /* --- Tarieven --- */
+        .pricing-box {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--surface-color);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-table th, .pricing-table td {
+            padding: 0.9rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+        }
+
+        .pricing-table th {
+            color: var(--text-main);
+            font-weight: 600;
+            background-color: var(--surface-alt);
+        }
+
+        .pricing-note {
+            font-size: 0.9rem;
+            background-color: var(--surface-alt);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-brown);
+            text-align: justify;
+            margin-top: 1.5rem;
+        }
+
+        .pricing-notice-2027 {
+            font-size: 0.95rem;
+            color: var(--accent-brown);
+            font-weight: 600;
+            font-style: italic;
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+
+        /* --- Contact --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .contact-info-list li {
+            margin-bottom: 1.2rem;
+            text-align: left;
+        }
+
+        .contact-info-list strong {
+            display: block;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            text-align: left;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background-color: var(--surface-color);
+            color: var(--text-main);
+            transition: border-color 0.2s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-pink);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--text-main);
+            color: #F5EBE6;
+            padding: 2.5rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer p {
+            color: #D8C8C4;
+            text-align: center;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+            .edu-grid, .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .compact-list li {
+                white-space: normal;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-cards-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: var(--bg-color);
+                padding: 1.5rem;
+                border-bottom: 1px solid var(--border-color);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigatie -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">Logopedie <span>Hanneke Lantin</span></a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu openen">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#over-mij">Over mij</a></li>
+                <li><a href="#specialisaties">Specialisaties</a></li>
+                <li><a href="#opleidingen">Opleidingen</a></li>
+                <li><a href="#praktijken">Praktijken</a></li>
+                <li><a href="#tarieven">Tarieven</a></li>
+                <li><a href="#contact" class="btn">Afspraak Maken</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Sectie -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <h1>Oromyofunctionele therapie (OMFT) &amp; Voedingsproblemen bij kinderen</h1>
+                <div class="hero-profession">Logopedist, deglutoloog &amp; lactatiekundige</div>
+                <p>Regio Sint-Truiden, Borgloon &amp; Herent</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn">Neem contact op</a>
+                    <a href="#tarieven" class="btn btn-outline">Bekijk tarieven</a>
+                </div>
+            </div>
+            
+            <!-- Afbeeldingskaarten (klikbaar naar specialisaties) -->
+            <div class="hero-cards-wrapper">
+                <a href="#specialisaties" class="hero-card">
+                    <div class="hero-card-img-wrapper">
+                        <img src="Designer_2.png" alt="OMFT Afbeelding">
+                    </div>
+                    <h3>OMFT</h3>
+                </a>
+                <a href="#specialisaties" class="hero-card">
+                    <div class="hero-card-img-wrapper">
+                        <img src="Designer (1).png" alt="Voedingsproblemen Afbeelding">
+                    </div>
+                    <h3>Voedingsproblemen</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Over mij -->
+    <section id="over-mij">
+        <div class="container">
+            <h2 class="section-title">Over mij</h2>
+            
+            <div class="about-grid">
+                <div class="about-image-wrapper">
+                    <img src="Foto website_2.jpg" alt="Hanneke Lantin">
+                </div>
+                <div class="about-text">
+                    <p>Sinds mijn vijftiende droomde ik ervan logopediste te worden. De combinatie van het medische en sociale aspect dat dit beroep kan bieden sprak me toen al enorm aan.</p>
+                    <p>In september 2019 begon ik dan ook vol enthousiasme aan mijn opleiding Logopedische en Audiologische Wetenschappen aan de KU Leuven. Doorheen de opleiding is mijn beeld van het beroep alleen maar mooier geworden. Ik ontdekte dat logopedie veel breder is dan enkel spraak-, taal- en leerproblemen. Zo ontwikkelde ik een grote interesse in slik- en voedingsstoornissen. Ik heb me dan ook verder verdiept in dit domein door het volgen de Master of Deglutology aan de KU Leuven, een master die zich een volledig jaar toespitst op slikstoornissen bij zowel kinderen als volwassenen. Om mijn expertise omtrent voeding bij de allerkleinsten verder uit te breiden, volgde ik vervolgens nog het Postgraduaat Lactatiekunde aan Artevelde Hogeschool in Gent. Intussen mag ik mezelf naast logopedist dus ook deglutoloog en lactatiekundige noemen.</p>
+                    <p>Met behulp van deze verschillende opleidingen en samenwerking met collega’s uit andere disciplines (o.a. tandheelkunde, orthodontie, dieetkunde, vroedkunde etc.), probeer ik de problematieken die zich aanmelden vanuit verschillende invalshoeken te benaderen om zo een holistische behandeling te kunnen bieden.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialisaties -->
+    <section id="specialisaties">
+        <div class="container">
+            <h2 class="section-title">Specialisaties</h2>
+            <p class="section-subtitle">Gespecialiseerde begeleiding en behandeling binnen mijn vakgebieden:</p>
+
+            <div class="spec-grid">
+                <div class="spec-card">
+                    <h3>Oromyofunctionele Therapie (OMFT)</h3>
+                    <p>Als OMFT-therapeut help ik jou / jouw kind bij het aanpakken van foutieve mondgewoonten, zoals mondademhaling, een afwijkende tongpositie in rust, een foutief slikpatroon of een onevenwicht tussen de spieren in het mondgebied. Deze foutieve mondgewoonten kunnen namelijk een negatieve impact hebben op de ontwikkeling en groei van de kaken en de stand van het gebit. Vandaar dat OMFT hand in hand gaat met tandheelkunde en orthodontie, om samen te zorgen voor een optimale ontwikkeling en een stabiel resultaat. Zowel kinderen als volwassenen zijn welkom bij mij voor de behandeling van deze problematiek.</p>
+                </div>
+                <div class="spec-card">
+                    <h3>Voedingsproblemen bij Kinderen</h3>
+                    <p>Als prelogopediste ondersteun ik kinderen en hun ouders bij moeilijkheden omtrent eten en drinken bij kinderen. Dit kan gaan over problemen die optreden in verschillende fases van het voedingstraject: bijvoorbeeld problemen bij de borst- of flesvoeding, flesweigeren, moeilijkheden met het eten van de lepel, het kauwen van vaste voeding of het drinken uit een beker of problemen bij het slikken of de speekselcontrole. Samen gaan we aan de slag met als doel het kind veilig en voldoende te laten eten en drinken. Hierin komt mijn kennis als lactatiekundige dus vaak handig van pas!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opleidingen en bijscholingen -->
+    <section id="opleidingen">
+        <div class="container">
+            <h2 class="section-title">Opleidingen &amp; Bijscholingen</h2>
+            <p class="section-subtitle">Voortdurende bijscholing om de beste zorg te kunnen garanderen:</p>
+
+            <div class="edu-grid">
+                <!-- Opleidingen -->
+                <div class="edu-card">
+                    <h3>Opleidingen</h3>
+                    <ul class="compact-list">
+                        <li>
+                            <span class="year-tag">2022</span> — <strong>Bachelor Logopedische Wetenschappen</strong> <span class="inst-tag">(KU Leuven)</span>
+                        </li>
+                        <li>
+                            <span class="year-tag">2024</span> — <strong>Master Logopedische Wetenschappen</strong> <span class="inst-tag">(KU Leuven)</span>
+                        </li>
+                        <li>
+                            <span class="year-tag">2025</span> — <strong>Master of Deglutology</strong> <span class="inst-tag">(KU Leuven)</span>
+                        </li>
+                        <li>
+                            <span class="year-tag">2026</span> — <strong>Postgraduaat Lactatiekunde</strong> <span class="inst-tag">(Artevelde)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Bijscholingen -->
+                <div class="edu-card">
+                    <h3>Bijscholingen</h3>
+                    <ul class="compact-list">
+                        <li>
+                            <span class="year-tag">2024</span> — <strong>Oromyofunctionele Therapie – Basis</strong> <span class="inst-tag">(SIG)</span>
+                        </li>
+                        <li>
+                            <span class="year-tag">2024</span> — <strong>Eet- en Drinkproblemen bij Kinderen I</strong> <span class="inst-tag">(HAN Nijmegen)</span>
+                        </li>
+                        <li>
+                            <span class="year-tag">2025</span> — <strong>Eet- en Drinkproblemen bij Kinderen II</strong> <span class="inst-tag">(HAN Nijmegen)</span>
+                        </li>
+                        <li>
+                            <span class="year-tag">2025</span> — <strong>Masterclass Flesweigeren</strong> <span class="inst-tag">(Volmondig Academy)</span>
+                        </li>
+                        <li>
+                            <span class="year-tag">2026</span> — <strong>Preventieve mondzorg bij jonge kinderen</strong> <span class="inst-tag">(ELZ Middenkempen)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Praktijken -->
+    <section id="praktijken">
+        <div class="container">
+            <h2 class="section-title">Praktijken & Locaties</h2>
+            <p class="section-subtitle">Je bent van harte welkom op de onderstaande locaties:</p>
+
+            <div class="practice-grid">
+                <div class="practice-card">
+                    <h3>Quantum Dental</h3>
+                    <ul class="practice-info">
+                        <li>
+                            <span class="street">📍 Warandestraat 11</span>
+                            <span class="city">3840 Hoeperingen</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="practice-card">
+                    <h3>De Linde</h3>
+                    <ul class="practice-info">
+                        <li>
+                            <span class="street">📍 Luikersteenweg 541</span>
+                            <span class="city">3800 Sint-Truiden</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="practice-card">
+                    <h3>De Blinker <span style="font-size: 0.85rem; font-weight: normal; color: var(--accent-brown);">(Vanaf 2027)</span></h3>
+                    <ul class="practice-info">
+                        <li>
+                            <span class="street">📍 Mechelsesteenweg 373</span>
+                            <span class="city">3020 Herent</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tarieven -->
+    <section id="tarieven">
+        <div class="container">
+            <h2 class="section-title">Tarieven & Terugbetaling</h2>
+
+            <div class="pricing-box">
+                <!-- Gewone tegemoetkoming -->
+                <h4 style="color: var(--accent-brown); margin-bottom: 0.8rem; font-size: 1.15rem;">Standaard tegemoetkoming</h4>
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Prestatie</th>
+                            <th>Tarief kabinet</th>
+                            <th>Terugbetaling ziekenkas</th>
+                            <th>Remgeld cliënt</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bilanzitting (30 min.)</td>
+                            <td>€ 45,38</td>
+                            <td>€ 37,88</td>
+                            <td>€ 7,50</td>
+                        </tr>
+                        <tr>
+                            <td>Sessie (30 min.)</td>
+                            <td>€ 38,37</td>
+                            <td>€ 32,87</td>
+                            <td>€ 5,50</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Verhoogde tegemoetkoming -->
+                <h4 style="color: var(--accent-brown); margin-top: 2rem; margin-bottom: 0.8rem; font-size: 1.15rem;">Verhoogde tegemoetkoming</h4>
+                <p style="font-size: 0.92rem; margin-bottom: 0.8rem;">Personen met een lager inkomen hebben recht op een verhoogde tegemoetkoming.</p>
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Prestatie</th>
+                            <th>Tarief kabinet</th>
+                            <th>Terugbetaling ziekenkas</th>
+                            <th>Remgeld cliënt</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bilanzitting (30 min.)</td>
+                            <td>€ 45,38</td>
+                            <td>€ 42,38</td>
+                            <td>€ 3,00</td>
+                        </tr>
+                        <tr>
+                            <td>Sessie (30 min.)</td>
+                            <td>€ 38,37</td>
+                            <td>€ 36,37</td>
+                            <td>€ 2,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pricing-note">
+                    <strong>💡 Goed om te weten:</strong> Als geconventioneerd logopediste pas ik de officiële RIZIV-tarieven toe. Afhankelijk van je situatie en ziekenfonds is er een gedeeltelijke (aanvullende verzekering) of nagenoeg volledige terugbetaling (verplichte verzekering) mogelijk.
+                </div>
+
+                <div class="pricing-notice-2027">
+                    * Tarieven en terugbetaling zullen wijzigen vanaf 2027
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Formulier -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Neem Contact Op</h2>
+            <p class="section-subtitle">Heb je een vraag of wil je een intakegesprek inplannen? Vul het formulier in of neem rechtstreeks contact op.</p>
+
+            <div class="contact-grid">
+                <div>
+                    <h3>Contactgegevens</h3>
+                    <p style="text-align: left;">Aarzel niet om te bellen of te mailen. Tijdens sessies staat de telefoon op stil, maar laat gerust een bericht achter.</p>
+                    
+                    <ul class="contact-info-list">
+                        <li>
+                            <strong>📞 Telefoonnummer</strong>
+                            <a href="tel:+32469240608">0469 24 06 08</a>
+                        </li>
+                        <li>
+                            <strong>✉️ E-mailadres</strong>
+                            <a href="mailto:hannekelantin.logopedie@outlook.com">hannekelantin.logopedie@outlook.com</a>
+                        </li>
+                        <li>
+                            <strong>Riziv-nummer</strong>
+                            <span>6-09041-22-802</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <form onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Naam & Voornaam *</label>
+                            <input type="text" id="name" class="form-control" placeholder="Jouw naam" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mailadres *</label>
+                            <input type="email" id="email" class="form-control" placeholder="naam@voorbeeld.be" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefoonnummer</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="0400 00 00 00">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Onderwerp / Hulpvraag</label>
+                            <input type="text" id="subject" class="form-control" placeholder="bijv. Aanvraag intake OMFT / Voeding">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Bericht *</label>
+                            <textarea id="message" class="form-control" placeholder="Omschrijf kort je vraag of situatie..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Verstuur Bericht</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Logopedie Hanneke Lantin. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+
+    <!-- Eenvoudige interactie scripts -->
+    <script>
+        // Mobiel menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Sluit mobiel menu bij op link klikken
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Contactformulier demonstratie
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert('Hartelijk dank voor je bericht! Dit is een voorbeeldformulier. Neem rechtstreeks contact op via e-mail of telefoon om je bericht daadwerkelijk te verzenden.');
+        }
+    </script>
+</body>
+</html>
