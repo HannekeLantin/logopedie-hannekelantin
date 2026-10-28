@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -304,7 +303,7 @@
         /* --- Specialisaties --- */
         .spec-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2.5rem;
             max-width: 1050px;
             margin: 0 auto;
@@ -371,9 +370,6 @@
             font-size: 0.9rem;
             color: var(--text-main);
             line-height: 1.4;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
             text-align: left;
         }
 
@@ -405,7 +401,7 @@
         /* --- Praktijken --- */
         .practice-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
 
@@ -452,10 +448,18 @@
             border: 1px solid var(--border-color);
         }
 
+        /* Zorgt dat tabellen netjes horizontaal scrollen op mobiele schermen */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-bottom: 1.5rem;
+        }
+
         .pricing-table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 1.5rem;
+            min-width: 480px; /* Zorgt dat kolommen niet te krap worden op GSM */
         }
 
         .pricing-table th, .pricing-table td {
@@ -493,8 +497,9 @@
         /* --- Contact --- */
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            grid-template-columns: 1fr;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .contact-info-list {
@@ -513,41 +518,6 @@
             font-size: 0.95rem;
         }
 
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.4rem;
-            font-weight: 500;
-            font-size: 0.95rem;
-            color: var(--text-main);
-            text-align: left;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 0.95rem;
-            background-color: var(--surface-color);
-            color: var(--text-main);
-            transition: border-color 0.2s ease;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-pink);
-        }
-
-        textarea.form-control {
-            resize: vertical;
-            min-height: 120px;
-        }
-
         /* --- Footer --- */
         .footer {
             background-color: var(--text-main);
@@ -562,18 +532,23 @@
             text-align: center;
         }
 
-        /* --- Responsive Design --- */
+        /* --- Responsive Design / Mobiele optimalisaties --- */
         @media (max-width: 900px) {
             .edu-grid, .about-grid {
                 grid-template-columns: 1fr;
             }
-            .compact-list li {
-                white-space: normal;
-            }
         }
 
         @media (max-width: 768px) {
-            .hero-grid, .contact-grid {
+            section {
+                padding: 3rem 0;
+            }
+
+            .pricing-box {
+                padding: 1.5rem 1rem;
+            }
+
+            .hero-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -604,6 +579,10 @@
 
             .nav-links.active {
                 display: flex;
+            }
+
+            p {
+                text-align: left;
             }
         }
     </style>
@@ -791,58 +770,62 @@
             <div class="pricing-box">
                 <!-- Gewone tegemoetkoming -->
                 <h4 style="color: var(--accent-brown); margin-bottom: 0.8rem; font-size: 1.15rem;">Standaard tegemoetkoming</h4>
-                <table class="pricing-table">
-                    <thead>
-                        <tr>
-                            <th>Prestatie</th>
-                            <th>Tarief kabinet</th>
-                            <th>Terugbetaling ziekenkas</th>
-                            <th>Remgeld cliënt</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Bilanzitting (30 min.)</td>
-                            <td>€ 45,38</td>
-                            <td>€ 37,88</td>
-                            <td>€ 7,50</td>
-                        </tr>
-                        <tr>
-                            <td>Sessie (30 min.)</td>
-                            <td>€ 38,37</td>
-                            <td>€ 32,87</td>
-                            <td>€ 5,50</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Prestatie</th>
+                                <th>Tarief kabinet</th>
+                                <th>Terugbetaling ziekenkas</th>
+                                <th>Remgeld cliënt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bilanzitting (30 min.)</td>
+                                <td>€ 45,38</td>
+                                <td>€ 37,88</td>
+                                <td>€ 7,50</td>
+                            </tr>
+                            <tr>
+                                <td>Sessie (30 min.)</td>
+                                <td>€ 38,37</td>
+                                <td>€ 32,87</td>
+                                <td>€ 5,50</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <!-- Verhoogde tegemoetkoming -->
                 <h4 style="color: var(--accent-brown); margin-top: 2rem; margin-bottom: 0.8rem; font-size: 1.15rem;">Verhoogde tegemoetkoming</h4>
                 <p style="font-size: 0.92rem; margin-bottom: 0.8rem;">Personen met een lager inkomen hebben recht op een verhoogde tegemoetkoming.</p>
-                <table class="pricing-table">
-                    <thead>
-                        <tr>
-                            <th>Prestatie</th>
-                            <th>Tarief kabinet</th>
-                            <th>Terugbetaling ziekenkas</th>
-                            <th>Remgeld cliënt</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Bilanzitting (30 min.)</td>
-                            <td>€ 45,38</td>
-                            <td>€ 42,38</td>
-                            <td>€ 3,00</td>
-                        </tr>
-                        <tr>
-                            <td>Sessie (30 min.)</td>
-                            <td>€ 38,37</td>
-                            <td>€ 36,37</td>
-                            <td>€ 2,00</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Prestatie</th>
+                                <th>Tarief kabinet</th>
+                                <th>Terugbetaling ziekenkas</th>
+                                <th>Remgeld cliënt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bilanzitting (30 min.)</td>
+                                <td>€ 45,38</td>
+                                <td>€ 42,38</td>
+                                <td>€ 3,00</td>
+                            </tr>
+                            <tr>
+                                <td>Sessie (30 min.)</td>
+                                <td>€ 38,37</td>
+                                <td>€ 36,37</td>
+                                <td>€ 2,00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <div class="pricing-note">
                     <strong>💡 Goed om te weten:</strong> Als geconventioneerd logopediste pas ik de officiële RIZIV-tarieven toe. Afhankelijk van je situatie en ziekenfonds is er een gedeeltelijke (aanvullende verzekering) of nagenoeg volledige terugbetaling (verplichte verzekering) mogelijk.
@@ -855,11 +838,11 @@
         </div>
     </section>
 
-    <!-- Contact & Formulier -->
+    <!-- Contact -->
     <section id="contact">
         <div class="container">
             <h2 class="section-title">Neem Contact Op</h2>
-            <p class="section-subtitle">Heb je een vraag of wil je een intakegesprek inplannen? Vul het formulier in of neem rechtstreeks contact op.</p>
+            <p class="section-subtitle">Heb je een vraag of wil je een intakegesprek inplannen? Neem gerust rechtstreeks contact op via onderstaande gegevens.</p>
 
             <div class="contact-grid">
                 <div>
@@ -880,32 +863,6 @@
                             <span>6-09041-22-802</span>
                         </li>
                     </ul>
-                </div>
-
-                <div>
-                    <form onsubmit="handleFormSubmit(event)">
-                        <div class="form-group">
-                            <label for="name">Naam & Voornaam *</label>
-                            <input type="text" id="name" class="form-control" placeholder="Jouw naam" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">E-mailadres *</label>
-                            <input type="email" id="email" class="form-control" placeholder="naam@voorbeeld.be" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Telefoonnummer</label>
-                            <input type="tel" id="phone" class="form-control" placeholder="0400 00 00 00">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Onderwerp / Hulpvraag</label>
-                            <input type="text" id="subject" class="form-control" placeholder="bijv. Aanvraag intake OMFT / Voeding">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Bericht *</label>
-                            <textarea id="message" class="form-control" placeholder="Omschrijf kort je vraag of situatie..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn" style="width: 100%;">Verstuur Bericht</button>
-                    </form>
                 </div>
             </div>
         </div>
@@ -934,12 +891,6 @@
                 navLinks.classList.remove('active');
             });
         });
-
-        // Contactformulier demonstratie
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            alert('Hartelijk dank voor je bericht! Dit is een voorbeeldformulier. Neem rechtstreeks contact op via e-mail of telefoon om je bericht daadwerkelijk te verzenden.');
-        }
     </script>
 </body>
 </html>
