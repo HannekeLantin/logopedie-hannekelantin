@@ -141,30 +141,31 @@
         .btn {
             display: inline-block;
             background-color: var(--primary-pink);
-            color: #FFFFFF;
+            color: #FFFFFF !important;
             padding: 0.75rem 1.5rem;
             border-radius: 30px;
             font-weight: 600;
             border: none;
             cursor: pointer;
             transition: background-color 0.2s ease, transform 0.1s ease;
+            text-align: center;
         }
 
         .btn:hover {
             background-color: var(--primary-pink-hover);
-            color: #FFFFFF;
+            color: #FFFFFF !important;
             transform: translateY(-1px);
         }
 
         .btn-outline {
             background-color: transparent;
             border: 2px solid var(--accent-brown);
-            color: var(--accent-brown);
+            color: var(--accent-brown) !important;
         }
 
         .btn-outline:hover {
             background-color: var(--accent-brown);
-            color: #FFFFFF;
+            color: #FFFFFF !important;
         }
 
         /* Mobile Menu Button */
@@ -303,7 +304,7 @@
         /* --- Specialisaties --- */
         .spec-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 2.5rem;
             max-width: 1050px;
             margin: 0 auto;
@@ -370,6 +371,9 @@
             font-size: 0.9rem;
             color: var(--text-main);
             line-height: 1.4;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             text-align: left;
         }
 
@@ -401,7 +405,7 @@
         /* --- Praktijken --- */
         .practice-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
@@ -448,7 +452,6 @@
             border: 1px solid var(--border-color);
         }
 
-        /* Zorgt dat tabellen netjes horizontaal scrollen op mobiele schermen */
         .table-responsive {
             width: 100%;
             overflow-x: auto;
@@ -458,8 +461,8 @@
 
         .pricing-table {
             width: 100%;
+            min-width: 480px;
             border-collapse: collapse;
-            min-width: 480px; /* Zorgt dat kolommen niet te krap worden op GSM */
         }
 
         .pricing-table th, .pricing-table td {
@@ -518,6 +521,10 @@
             font-size: 0.95rem;
         }
 
+        .contact-info-list a {
+            word-break: break-word;
+        }
+
         /* --- Footer --- */
         .footer {
             background-color: var(--text-main);
@@ -532,10 +539,13 @@
             text-align: center;
         }
 
-        /* --- Responsive Design / Mobiele optimalisaties --- */
+        /* --- Responsive Design --- */
         @media (max-width: 900px) {
             .edu-grid, .about-grid {
                 grid-template-columns: 1fr;
+            }
+            .compact-list li {
+                white-space: normal;
             }
         }
 
@@ -544,12 +554,17 @@
                 padding: 3rem 0;
             }
 
+            p, .about-text p, .spec-card p, .pricing-note {
+                text-align: left;
+            }
+
             .pricing-box {
                 padding: 1.5rem 1rem;
             }
 
             .hero-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .hero-cards-wrapper {
@@ -575,14 +590,23 @@
                 padding: 1.5rem;
                 border-bottom: 1px solid var(--border-color);
                 box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                gap: 1.2rem;
             }
 
             .nav-links.active {
                 display: flex;
             }
 
-            p {
-                text-align: left;
+            .nav-links .btn {
+                width: 100%;
+            }
+
+            .spec-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .spec-card {
+                padding: 1.8rem 1.4rem;
             }
         }
     </style>
@@ -727,7 +751,7 @@
     <!-- Praktijken -->
     <section id="praktijken">
         <div class="container">
-            <h2 class="section-title">Praktijken & Locaties</h2>
+            <h2 class="section-title">Praktijken &amp; Locaties</h2>
             <p class="section-subtitle">Je bent van harte welkom op de onderstaande locaties:</p>
 
             <div class="practice-grid">
@@ -765,7 +789,7 @@
     <!-- Tarieven -->
     <section id="tarieven">
         <div class="container">
-            <h2 class="section-title">Tarieven & Terugbetaling</h2>
+            <h2 class="section-title">Tarieven &amp; Terugbetaling</h2>
 
             <div class="pricing-box">
                 <!-- Gewone tegemoetkoming -->
